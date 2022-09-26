@@ -1646,7 +1646,7 @@
           class="md-fences md-end-block ty-contain-cm modeLoaded"
           spellcheck="false"
           lang=""
-        ><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span id="value" role="presentation" style="padding-right: 0.1px;">-----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmlosdz+XTNepp5UwNyBoolSJ/RHBGtp9+ekXo3dwS8ucVwWYZ4UsIxx+SUc8R3CtaFJmzNhZ7kzBG+gI8RKEy+my7G2dy9nr4FAMddxOj41Od2sE4FBU3JztzcV1dtU8KXP8+TlMxW63m6Wb0b++i4VsLUuIHLfu9+Bj3rF1suLDIuxmhjpynxBPHUf/hyFJpoAANolrIyGl7MrNju7cmlwztG3mN6bxekimmwzJhK299mYYuRPfAvaVkK39fo7ERyXFigJzlMYVZFD4fzT9jl5zXoOHDfwhHA1R5oleSQVmevdCCex48vYaBBSzRLzp8/ipeLzN13K+AC2RCMbuGQIDAQAB-----END PUBLIC KEY-----</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 132px;"></div><div class="CodeMirror-gutters" style="display: none; height: 132px;"></div></div></div></pre>
+        ><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span></span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span id="value" role="presentation" style="padding-right: 0.1px;"></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 132px;"></div><div class="CodeMirror-gutters" style="display: none; height: 132px;"></div></div></div></pre>
         <button
           id="button"
           onclick="copy('button','value')"
@@ -2295,6 +2295,14 @@
       });
     </script>
     <script>
+      const req = new XMLHttpRequest();
+      const url = window.location.href + "my_public_key";
+      req.open("GET", url);
+      req.send();
+      req.onreadystatechange = (e) => {
+        document.getElementById("value").innerText = req.responseText;
+      };
+
       function copy(btn_id, value_id) {
         var btn = document.getElementById(btn_id);
         var clipboard = new ClipboardJS(btn, {
