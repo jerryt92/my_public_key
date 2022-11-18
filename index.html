@@ -2304,7 +2304,7 @@
       };
 
       function copy(btn_id, value_id) {
-        navigator.clipboard.writeText(document.getElementById(value_id).value)
+        navigator.clipboard.writeText(document.getElementById(value_id).innerText)
                 .then(
                         function () {
                           console.log('复制成功');
